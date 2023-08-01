@@ -1,9 +1,16 @@
-import React from 'react'
+import { FC } from "react";
 
-const Home = () => {
-  return (
-    <div>Home</div>
-  )
+import Post, { DataProps } from "./Post";
+interface Props {
+  data: DataProps[];
 }
 
-export default Home
+const Home: FC<Props> = ({ data }) => {
+  return (
+    <>
+      <Post data={data} />
+    </>
+  );
+};
+
+export default Home;
