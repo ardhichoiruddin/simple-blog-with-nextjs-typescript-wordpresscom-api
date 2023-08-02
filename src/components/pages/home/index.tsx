@@ -1,14 +1,21 @@
 import { FC } from "react";
 
 import Post, { DataProps } from "./Post";
+import PostsLoading from "@/components/global/PostsLoading";
+
+interface LoadingProps {
+  post: boolean;
+}
 interface Props {
   data: DataProps[];
+  loading: LoadingProps;
 }
 
-const Home: FC<Props> = ({ data }) => {
+const Home: FC<Props> = ({ data, loading }) => {
   return (
     <>
-      <Post data={data} />
+      {loading.post && <PostsLoading />}
+      {!loading.post && <Post data={data} />}
     </>
   );
 };

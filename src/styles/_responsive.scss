@@ -1,0 +1,15 @@
+@mixin col-max($media) {
+  @if $media == sm {
+    @media (max-width: 641px) {
+      @content;
+    }
+  } @else if $media == md {
+    @media (max-width: 769px) {
+      @content;
+    }
+  } @else if $media == lg {
+    @media (max-width: 1025px) {
+      @content;
+    }
+  }
+}

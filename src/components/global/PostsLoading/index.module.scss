@@ -1,0 +1,44 @@
+@import "../../../styles/responsive";
+
+.skeleton {
+  &__wrapper {
+    width: auto;
+    @include col-max(lg) {
+      width: 100%;
+    }
+  }
+
+  &__images {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 0.5rem;
+    align-items: self-start;
+    display: block;
+    flex-shrink: 0;
+    position: relative;
+
+    @include col-max(lg) {
+      width: 6rem;
+      height: 6rem;
+    }
+    @include col-max(md) {
+      width: 100%;
+      height: 12rem;
+    }
+  }
+
+  &__text {
+    &_date {
+      width: 100px;
+      @include col-max(lg) {
+        width: 140px;
+      }
+    }
+    &_title {
+      width: 300px;
+      @include col-max(lg) {
+        width: 230px;
+      }
+    }
+  }
+}
