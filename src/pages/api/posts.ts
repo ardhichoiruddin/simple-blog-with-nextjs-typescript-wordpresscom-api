@@ -6,7 +6,7 @@ const getAllPost = (page: string) => {
   return new Promise(async (resolve, reject) => {
     try {
       const response = await fetch(
-        `${urlApi}/posts?fields=featured_image,id,excerpt,title,date,slug&number=4&page=${page}`
+        `${urlApi}/posts?fields=featured_image,id,excerpt,title,date,slug&number=6&page=${page}`
       );
       const data = await response.json();
       const result = data.posts.map((it: any) => {

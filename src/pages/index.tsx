@@ -39,6 +39,9 @@ const Home: NextPageWithLayout = () => {
         }}
       />
       <HomeComponent />
+      <br />
+      <br />
+      <br />
     </>
   );
 };

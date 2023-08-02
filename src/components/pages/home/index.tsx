@@ -21,7 +21,7 @@ const Home: FC = () => {
         ...prevState,
         post: true,
       }));
-      const response = await axios.get(`/api/home?page=1`);
+      const response = await axios.get(`/api/posts?page=1`);
       setData(response.data);
       setLoading((prevState) => ({
         ...prevState,
@@ -42,7 +42,7 @@ const Home: FC = () => {
         ...prevState,
         postShowMore: true,
       }));
-      const response = await axios.get(`/api/home?page=${pagePost + 1}`);
+      const response = await axios.get(`/api/posts?page=${pagePost + 1}`);
       setData((prevState) => [...prevState, ...response.data]);
       setLoading((prevState) => ({
         ...prevState,
@@ -68,7 +68,7 @@ const Home: FC = () => {
         <Container>
           {!loading.post && <Post data={data} />}
           {loading.post && <PostsLoading />}
-          {postLength === 4 && (
+          {postLength === 6 && (
             <div className="text-center">
               <Button
                 size="md"
