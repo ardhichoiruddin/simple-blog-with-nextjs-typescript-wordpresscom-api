@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?tb37o9');
-  src:  url('fonts/icomoon.eot?tb37o9#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?tb37o9') format('truetype'),
-    url('fonts/icomoon.woff?tb37o9') format('woff'),
-    url('fonts/icomoon.svg?tb37o9#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?7m69t9');
+  src:  url('fonts/icomoon.eot?7m69t9#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?7m69t9') format('truetype'),
+    url('fonts/icomoon.woff?7m69t9') format('woff'),
+    url('fonts/icomoon.svg?7m69t9#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -76,6 +76,15 @@
 .icon-location:before {
   content: "\e947";
 }
+.icon-alarm:before {
+  content: "\e950";
+}
+.icon-calendar:before {
+  content: "\e953";
+}
+.icon-redo:before {
+  content: "\e968";
+}
 .icon-bubbles2:before {
   content: "\e96d";
 }
@@ -145,7 +154,7 @@
 .icon-circle-left:before {
   content: "\ea44";
 }
-.icon-embed2:before {
+.icon-embed:before {
   content: "\ea80";
 }
 .icon-mail2:before {

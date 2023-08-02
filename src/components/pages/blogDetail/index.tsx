@@ -28,6 +28,7 @@ const BlogDetail: FC<Props> = ({ data }) => {
               content={data.content}
               image={data.featured_image}
               title={data.title}
+              categories={data.categories}
             />
           </div>
         </div>

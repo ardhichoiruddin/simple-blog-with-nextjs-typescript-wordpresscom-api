@@ -20,10 +20,23 @@ export const getServerSideProps: GetServerSideProps<{
   data: DataProps;
 }> = async (context) => {
   const slug = context?.params?.slug;
-  const response = await fetch(
-    `${urlApi}/posts/slug:${slug}?fields=date,title,content,slug,featured_image,categories,excerpt`
-  );
-  const data = await response.json();
+  const response = await fetch(`${urlApi}/posts/slug:${slug}`);
+  const result = await response.json();
+  const keyListCategories = Object.keys(result.categories);
+  const data = {
+    date: result.date,
+    title: result.title,
+    content: result.content,
+    slug: result.slug,
+    featured_image: result.featured_image,
+    categories: keyListCategories.map((it) => {
+      return {
+        name: result.categories[it].name,
+        slug: result.categories[it].slug,
+      };
+    }),
+    excerpt: result.excerpt,
+  };
   context.res.setHeader(
     "Cache-Control",
     "public, s-maxage=10, stale-while-revalidate=59"
@@ -34,6 +47,7 @@ export const getServerSideProps: GetServerSideProps<{
 const BlogDetail = ({
   data,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+  console.log(data);
   const regex = /<\/?p>/g;
   const deleteP = data.excerpt.replace(regex, "");
   return (
