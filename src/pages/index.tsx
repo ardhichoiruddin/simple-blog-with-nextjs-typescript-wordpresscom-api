@@ -3,7 +3,6 @@ import { NextSeo } from "next-seo";
 
 import type { NextPageWithLayout } from "./_app";
 import Layout from "@/components/layout";
-
 import HomeComponent from "@/components/pages/home";
 
 const Home: NextPageWithLayout = () => {

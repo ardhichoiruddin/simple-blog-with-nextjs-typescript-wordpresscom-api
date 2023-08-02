@@ -1,0 +1,118 @@
+@import "../../../styles/responsive";
+
+.richText {
+  &__img {
+    background: #000;
+    img {
+      position: relative !important;
+      min-height: 200px;
+    }
+  }
+
+  &__content_style {
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      line-height: 32px;
+    }
+    code {
+      font-size: 1.1rem;
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    ol {
+      padding-left: 1.25rem;
+      margin-bottom: 1rem;
+      li {
+        font-size: 1.1rem;
+        line-height: 32px;
+        list-style-type: decimal;
+        margin-bottom: 0.75rem;
+      }
+    }
+
+    ul {
+      padding-left: 1.25rem;
+      margin-bottom: 1rem;
+      li {
+        font-size: 1.1rem;
+        line-height: 32px;
+        list-style-type: circle;
+        margin-bottom: 0.75rem;
+      }
+    }
+
+    h2 {
+      font-size: 2rem;
+      line-height: 1.2;
+      font-weight: 600;
+      margin-bottom: 1rem;
+
+      @include col-max(md) {
+        font-size: 1.4rem;
+      }
+    }
+
+    blockquote {
+      padding-right: 1rem;
+      padding-left: 1rem;
+      padding-top: 1.1rem;
+      padding-bottom: 1.1rem;
+      border-top: 2px solid;
+      border-bottom: 2px solid;
+      margin-bottom: 2rem;
+      margin-top: 2rem;
+      border-style: dashed;
+      p {
+        font-size: 1.4rem;
+        line-height: 1.5;
+        font-style: italic;
+        margin: 0;
+
+        @include col-max(sm) {
+          font-size: 1.2rem;
+        }
+      }
+    }
+
+    a {
+      color: rgb(253, 50, 84);
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    figure {
+      margin-bottom: 2rem;
+      margin-top: 2rem;
+      table {
+        margin-bottom: 0.5rem;
+        width: 100%;
+        tr {
+          td {
+            padding: 0.75rem;
+            border: 0.75px solid;
+            line-height: 32px;
+            font-size: 1.1rem;
+          }
+        }
+      }
+
+      figcaption {
+        font-size: 0.75rem;
+        text-align: center;
+      }
+    }
+
+    figure {
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      img {
+        width: 100%;
+        height: 100%;
+        margin-bottom: 0.75rem;
+      }
+    }
+  }
+}
