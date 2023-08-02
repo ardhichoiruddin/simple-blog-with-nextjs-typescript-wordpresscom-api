@@ -1,7 +1,7 @@
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { useTheme } from "next-themes";
 
-import Container from "../Container";
 import styles from "./index.module.scss";
 
 const SkeletonCustom = () => {
@@ -29,18 +29,20 @@ const SkeletonCustom = () => {
 };
 
 const PostsLoading = () => {
+  const { theme } = useTheme();
   return (
     <div className="py-6 sm:py-8 lg:py-12">
-      <Container>
-        <SkeletonTheme baseColor="rgb(31 41 55/1)" highlightColor="#444">
-          <div className="grid gap-8 sm:grid-cols-2 sm:gap-12 lg:grid-cols-2 xl:grid-cols-2 xl:gap-16">
-            <SkeletonCustom />
-            <SkeletonCustom />
-            <SkeletonCustom />
-            <SkeletonCustom />
-          </div>
-        </SkeletonTheme>
-      </Container>
+      <SkeletonTheme
+        baseColor={theme === "dark" ? "rgb(31 41 55/1)" : "#D8D9DA"}
+        highlightColor={theme === "dark" ? "#444" : "#FFF6E0"}
+      >
+        <div className="grid gap-8 sm:grid-cols-2 sm:gap-12 lg:grid-cols-2 xl:grid-cols-2 xl:gap-16">
+          <SkeletonCustom />
+          <SkeletonCustom />
+          <SkeletonCustom />
+          <SkeletonCustom />
+        </div>
+      </SkeletonTheme>
     </div>
   );
 };

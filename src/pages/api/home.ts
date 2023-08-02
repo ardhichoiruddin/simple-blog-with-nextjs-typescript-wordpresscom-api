@@ -2,11 +2,11 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 import urlApi from "@/utils/urlApi";
 
-const getAllPost = () => {
+const getAllPost = (page: string) => {
   return new Promise(async (resolve, reject) => {
     try {
       const response = await fetch(
-        `${urlApi}/posts?fields=featured_image,id,excerpt,title,date,slug&number=4`
+        `${urlApi}/posts?fields=featured_image,id,excerpt,title,date,slug&number=4&page=${page}`
       );
       const data = await response.json();
       const result = data.posts.map((it: any) => {
@@ -35,11 +35,12 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const method = req.method;
+  const page: any = req.query.page;
 
   switch (method) {
     case "GET":
       try {
-        const response = await getAllPost();
+        const response = await getAllPost(page);
         return res.status(200).json(response);
       } catch (err) {
         return res.status(500).json({
