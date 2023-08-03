@@ -16,7 +16,7 @@ interface Props {
 
 const Header: FC<Props> = ({ menuLists }) => {
   return (
-    <header className="mb-2 border-b dark:border-gray-800 border-gray-200 py-4">
+    <header className="border-b dark:border-gray-800 border-gray-200 py-4">
       <Container>
         <div className="flex items-center justify-between">
           <div>

@@ -2,11 +2,16 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 import urlApi from "@/utils/urlApi";
 
-const getAllPost = (page: string) => {
+interface DataProps {
+  slug: string;
+  page: number;
+}
+
+const getPostByCategory = ({ slug, page }: DataProps) => {
   return new Promise(async (resolve, reject) => {
     try {
       const response = await fetch(
-        `${urlApi}/posts?fields=featured_image,id,excerpt,title,date,slug&number=6&page=${page}`
+        `${urlApi}/posts?fields=featured_image,id,excerpt,title,date,slug&category=${slug}&page=${page}&number=6`
       );
       const data = await response.json();
       const result = data.posts.map((it: any) => {
@@ -35,12 +40,17 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const method = req.method;
-  const page: any = req.query.page;
+  const query: any = req.query;
+  const slug = query.slug;
+  const page = query.page;
 
   switch (method) {
     case "GET":
       try {
-        const response = await getAllPost(page);
+        const response = await getPostByCategory({
+          slug,
+          page,
+        });
         res.setHeader(
           "Cache-Control",
           "public, s-maxage=100, stale-while-revalidate=59"

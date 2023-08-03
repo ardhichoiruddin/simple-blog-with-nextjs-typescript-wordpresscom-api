@@ -11,6 +11,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "penak966616533.files.wordpress.com",
       },
+      {
+        protocol: "https",
+        hostname: "penak966616533.files.wordpress.com",
+      },
     ],
   },
 };

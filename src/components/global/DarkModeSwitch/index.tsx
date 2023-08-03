@@ -13,11 +13,11 @@ const DarkModeSwitch: FC<Props> = ({ darkModeHandler, mode }) => {
         className="w-14 h-14 flex items-center justify-center"
         aria-label="dark mode"
       >
-        {mode === "light" ? (
-          <span className="icon-sun text-3xl"></span>
-        ) : (
-          <span className="icon-sun1 text-3xl"></span>
-        )}
+        <span
+          className={
+            mode === "light" ? "icon-sun text-3xl" : "icon-sun1 text-3xl"
+          }
+        ></span>
       </button>
     </div>
   );

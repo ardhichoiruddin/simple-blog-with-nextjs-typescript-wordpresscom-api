@@ -54,7 +54,6 @@ const Home: FC = () => {
         category: true,
       }));
       const response = await axios.get(`/api/categories`);
-      console.log(response);
       setData((prevState) => ({
         ...prevState,
         categories: response.data,

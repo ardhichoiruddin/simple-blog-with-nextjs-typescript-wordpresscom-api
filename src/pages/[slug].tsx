@@ -48,7 +48,6 @@ export const getServerSideProps: GetServerSideProps<{
 const BlogDetail = ({
   data,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  console.log(data);
   const regex = /<\/?p>/g;
   const deleteP = data.excerpt.replace(regex, "");
   return (
@@ -56,9 +55,8 @@ const BlogDetail = ({
       <NextSeo
         title={data.title}
         description={deleteP}
-        canonical="https://www.canonical.ie/"
         openGraph={{
-          url: "https://www.url.ie/a",
+          url: `${process.env.NEXT_PUBLIC_DOMAIN}/${data.slug}`,
           title: data.title,
           description: deleteP,
           images: [

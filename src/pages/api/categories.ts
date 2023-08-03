@@ -26,6 +26,10 @@ export default async function handler(
     case "GET":
       try {
         const response = await getCategories();
+        res.setHeader(
+          "Cache-Control",
+          "public, s-maxage=100, stale-while-revalidate=59"
+        );
         return res.status(200).json(response);
       } catch (err) {
         return res.status(500).json({

@@ -11,29 +11,20 @@ const Home: NextPageWithLayout = () => {
     <>
       <NextSeo
         title="Ardhi Blog"
-        description="This example uses more of the available config options."
-        canonical="https://www.canonical.ie/"
+        description="Berbagi pengetahuan tentang Programing, Technologi dan Musik"
         openGraph={{
-          url: "https://www.url.ie/a",
-          title: "Open Graph Title",
-          description: "Open Graph Description",
+          url: process.env.NEXT_PUBLIC_DOMAIN,
+          title: "Ardhi Blog",
+          description:
+            "Berbagi pengetahuan tentang Programing, Technologi dan Musik",
           images: [
             {
-              url: "https://www.example.ie/og-image-01.jpg",
-              width: 800,
-              height: 600,
-              alt: "Og Image Alt",
+              url: "/assets/images/ardhi-image.png",
+              width: 952,
+              height: 573,
+              alt: "Ardhi Image",
               type: "image/jpeg",
             },
-            {
-              url: "https://www.example.ie/og-image-02.jpg",
-              width: 900,
-              height: 800,
-              alt: "Og Image Alt Second",
-              type: "image/jpeg",
-            },
-            { url: "https://www.example.ie/og-image-03.jpg" },
-            { url: "https://www.example.ie/og-image-04.jpg" },
           ],
           siteName: "Ardhi Blog",
         }}
