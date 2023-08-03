@@ -5,12 +5,20 @@ import PostsLoading from "@/components/global/PostsLoading";
 import axios from "@/libs/axios";
 import Container from "@/components/global/Container";
 import Button from "@/components/global/Button";
+import Category, { CategoriesProps } from "./Category";
 
 const Home: FC = () => {
-  const [data, setData] = useState<DataProps[] | []>([]);
+  const [data, setData] = useState<{
+    post: DataProps[];
+    categories: CategoriesProps[];
+  }>({
+    post: [],
+    categories: [],
+  });
   const [loading, setLoading] = useState({
     post: false,
     postShowMore: false,
+    category: false,
   });
   const [pagePost, setPagePost] = useState(1);
   const [postLength, setPostLength] = useState(0);
@@ -22,7 +30,10 @@ const Home: FC = () => {
         post: true,
       }));
       const response = await axios.get(`/api/posts?page=1`);
-      setData(response.data);
+      setData((prevState) => ({
+        ...prevState,
+        post: response.data,
+      }));
       setLoading((prevState) => ({
         ...prevState,
         post: false,
@@ -36,6 +47,31 @@ const Home: FC = () => {
     }
   };
 
+  const getCategory = async () => {
+    try {
+      setLoading((prevState) => ({
+        ...prevState,
+        category: true,
+      }));
+      const response = await axios.get(`/api/categories`);
+      console.log(response);
+      setData((prevState) => ({
+        ...prevState,
+        categories: response.data,
+      }));
+      setLoading((prevState) => ({
+        ...prevState,
+        category: false,
+      }));
+      setPostLength(response.data.length);
+    } catch (err) {
+      setLoading((prevState) => ({
+        ...prevState,
+        category: false,
+      }));
+    }
+  };
+
   const showMorePost = async () => {
     try {
       setLoading((prevState) => ({
@@ -43,7 +79,10 @@ const Home: FC = () => {
         postShowMore: true,
       }));
       const response = await axios.get(`/api/posts?page=${pagePost + 1}`);
-      setData((prevState) => [...prevState, ...response.data]);
+      setData((prevState) => ({
+        ...prevState,
+        post: [...prevState.post, ...response.data],
+      }));
       setLoading((prevState) => ({
         ...prevState,
         postShowMore: false,
@@ -59,6 +98,7 @@ const Home: FC = () => {
   };
 
   useEffect(() => {
+    getCategory();
     getData();
   }, []);
 
@@ -66,7 +106,10 @@ const Home: FC = () => {
     <>
       <section>
         <Container>
-          {!loading.post && <Post data={data} />}
+          <div className="mb-4 w-full overflow-x-auto px-2 py-1">
+            <Category data={data.categories} />
+          </div>
+          {!loading.post && <Post data={data.post} />}
           {loading.post && <PostsLoading />}
           {postLength === 6 && (
             <div className="text-center">

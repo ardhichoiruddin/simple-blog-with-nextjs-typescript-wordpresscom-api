@@ -22,7 +22,7 @@ const BlogDetail: FC<Props> = ({ data }) => {
     <>
       <Container>
         <div>
-          <div className="lg:w-4/6 mx-auto pt-10">
+          <div className="lg:w-4/6 mx-auto">
             <Text
               date={data.date}
               content={data.content}

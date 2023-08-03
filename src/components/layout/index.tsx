@@ -57,6 +57,9 @@ const Layout: FC<Props> = ({ children }) => {
       <Header menuLists={menulists} />
       <main className="min-h-screen">{children}</main>
       <DarkModeSwitch darkModeHandler={darkModeHandler} mode={theme} />
+      <br />
+      <br />
+      <br />
       <Footer />
     </div>
   );

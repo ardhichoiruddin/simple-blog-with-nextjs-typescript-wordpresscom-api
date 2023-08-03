@@ -5,6 +5,7 @@ import type { InferGetServerSidePropsType, GetServerSideProps } from "next";
 import BlogDetailComponent from "@/components/pages/blogDetail";
 import Layout from "@/components/layout";
 import urlApi from "@/utils/urlApi";
+import ContentWrapper from "@/components/global/ContentWrapper";
 
 type DataProps = {
   date: string;
@@ -72,7 +73,9 @@ const BlogDetail = ({
           siteName: "Ardhi Blog",
         }}
       />
-      <BlogDetailComponent data={data} />
+      <ContentWrapper>
+        <BlogDetailComponent data={data} />
+      </ContentWrapper>
     </>
   );
 };

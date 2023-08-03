@@ -6,7 +6,7 @@ const getCategories = () => {
   return new Promise(async (resolve, reject) => {
     try {
       const response = await fetch(
-        `${urlApi}/categories?fields=ID,name,post_count`
+        `${urlApi}/categories?fields=ID,name,post_count,slug`
       );
       const data = await response.json();
       resolve(data.categories);

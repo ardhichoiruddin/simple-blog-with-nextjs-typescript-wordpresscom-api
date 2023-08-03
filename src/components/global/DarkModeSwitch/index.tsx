@@ -11,6 +11,7 @@ const DarkModeSwitch: FC<Props> = ({ darkModeHandler, mode }) => {
       <button
         onClick={darkModeHandler}
         className="w-14 h-14 flex items-center justify-center"
+        aria-label="dark mode"
       >
         {mode === "light" ? (
           <span className="icon-sun text-3xl"></span>

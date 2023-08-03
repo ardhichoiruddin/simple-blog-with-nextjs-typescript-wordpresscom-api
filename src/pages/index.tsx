@@ -4,6 +4,7 @@ import { NextSeo } from "next-seo";
 import type { NextPageWithLayout } from "./_app";
 import Layout from "@/components/layout";
 import HomeComponent from "@/components/pages/home";
+import ContentWrapper from "@/components/global/ContentWrapper";
 
 const Home: NextPageWithLayout = () => {
   return (
@@ -37,10 +38,9 @@ const Home: NextPageWithLayout = () => {
           siteName: "Ardhi Blog",
         }}
       />
-      <HomeComponent />
-      <br />
-      <br />
-      <br />
+      <ContentWrapper>
+        <HomeComponent />
+      </ContentWrapper>
     </>
   );
 };
