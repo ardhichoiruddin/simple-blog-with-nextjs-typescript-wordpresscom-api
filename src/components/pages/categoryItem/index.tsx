@@ -10,7 +10,7 @@ import Button from "@/components/global/Button";
 const CategoryItem: FC = () => {
   const router = useRouter();
   const slug: any = router.query.slug;
-  const title = slug.toUpperCase().replace("-", " ");
+  const title = slug?.toUpperCase()?.replace("-", " ");
   const [data, setData] = useState<{
     post: DataProps[];
   }>({
@@ -79,12 +79,14 @@ const CategoryItem: FC = () => {
     getData();
   }, [slug]);
 
+  console.log(data.post);
+
   return (
     <>
       <section>
         <Container>
           <div className="mb-1">
-            <h1 className="text-3xl">{title}</h1>
+            <h1 className="text-2xl sm:text-3xl">{title}</h1>
           </div>
           {!loading.post && <Post data={data.post} />}
           {loading.post && <PostsLoading />}

@@ -10,7 +10,7 @@ import Layout from "@/components/layout";
 const CategoryItem: NextPageWithLayout = () => {
   const router = useRouter();
   const slug: any = router.query.slug ? router.query.slug : "...";
-  const category = slug.toUpperCase().replace("-", " ");
+  const category = slug?.toUpperCase()?.replace("-", " ");
   return (
     <>
       <NextSeo

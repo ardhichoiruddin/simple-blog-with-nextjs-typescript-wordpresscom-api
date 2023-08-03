@@ -2,6 +2,7 @@ import { FC } from "react";
 
 import ArticleItem from "@/components/global/ArticleItem";
 import { dateToHuman } from "@/libs/dayjs";
+import DataEmpty from "@/components/global/DataEmpty";
 
 export interface DataProps {
   image: string;
@@ -29,6 +30,7 @@ const Post: FC<Props> = ({ data }) => {
           />
         ))}
       </div>
+      {data.length === 0 && <DataEmpty />}
     </section>
   );
 };

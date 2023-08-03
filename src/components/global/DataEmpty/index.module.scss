@@ -1,0 +1,11 @@
+@import "../../../styles/responsive";
+
+.image {
+  img {
+    max-width: 300px;
+
+    @include col-max(sm) {
+      max-width: 239px;
+    }
+  }
+}
