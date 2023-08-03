@@ -105,7 +105,7 @@ const Home: FC = () => {
     <>
       <section>
         <Container>
-          <div className="mb-4 w-full overflow-x-auto px-2 py-1">
+          <div className="mb-4 w-full overflow-x-auto px-2 py-1.5">
             <Category data={data.categories} />
           </div>
           {!loading.post && <Post data={data.post} />}

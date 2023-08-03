@@ -23,6 +23,11 @@ export const getServerSideProps: GetServerSideProps<{
   const slug = context?.params?.slug;
   const response = await fetch(`${urlApi}/posts/slug:${slug}`);
   const result = await response.json();
+  if (result?.error) {
+    return {
+      notFound: true,
+    };
+  }
   const keyListCategories = Object.keys(result.categories);
   const data = {
     date: result.date,
