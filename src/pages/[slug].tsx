@@ -17,10 +17,30 @@ type DataProps = {
   excerpt: string;
 };
 
+const slugToMedium = [
+  "tips-mengurangi-bundle-size-material-ui-react-js-di-vite-2023-7f1c57471ee6",
+  "membuat-synchronous-looping-dengan-while-di-javascript-847f3c075933",
+  "cara-menggunakan-firebase-di-fastify-d64725493550",
+  "menghilangkan-youtube-logo-di-video-embed-youtube-dengan-javascript-dan-css-2023-7665e821cc7b",
+  "website-yang-bermanfaat-dan-patut-di-coba-untuk-musisi-b1e1f030be27",
+  "3-teknik-dalam-pengembangan-frontend-web-27f038ade0a1",
+  "cara-menggunakan-useeffect-di-react-js-7d0676d19dba",
+];
+
 export const getServerSideProps: GetServerSideProps<{
   data: DataProps;
 }> = async (context) => {
   const slug = context?.params?.slug;
+  const findSlugToMedium = slugToMedium.find((fl) => fl === slug);
+  if (findSlugToMedium) {
+    return {
+      redirect: {
+        destination: `https://medium.com/@ardhicho/${slug}`,
+        permanent: true,
+        basePath: false,
+      },
+    };
+  }
   const response = await fetch(`${urlApi}/posts/slug:${slug}`);
   const result = await response.json();
   if (result?.error) {
@@ -45,7 +65,7 @@ export const getServerSideProps: GetServerSideProps<{
   };
   context.res.setHeader(
     "Cache-Control",
-    "public, s-maxage=10, stale-while-revalidate=59"
+    "public, s-maxage=30, stale-while-revalidate=60"
   );
   return { props: { data } };
 };
