@@ -8,7 +8,7 @@ export default function rateLimit(options: any) {
 
   return {
     check: (res: any, limit: any, token: any) =>
-      new Promise((resolve, reject) => {
+      new Promise((resolve: any, reject: any) => {
         const tokenCount = tokenCache.get(token) || [0];
         if (tokenCount[0] === 0) {
           tokenCache.set(token, tokenCount);
