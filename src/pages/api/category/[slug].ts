@@ -1,6 +1,12 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
 import urlApi from "@/utils/urlApi";
+import rateLimit from "@/utils/rateLimit";
+
+const limiter = rateLimit({
+  interval: 60 * 1000,
+  uniqueTokenPerInterval: 1000,
+});
 
 interface DataProps {
   slug: string;
@@ -43,6 +49,12 @@ export default async function handler(
   const query: any = req.query;
   const slug = query.slug;
   const page = query.page;
+
+  try {
+    await limiter.check(res, 30, "CACHE_TOKEN");
+  } catch {
+    return res.status(429).json({ error: "Rate limit exceeded" });
+  }
 
   switch (method) {
     case "GET":

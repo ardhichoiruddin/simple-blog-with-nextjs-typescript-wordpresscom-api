@@ -1,6 +1,12 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
 import urlApi from "@/utils/urlApi";
+import rateLimit from "@/utils/rateLimit";
+
+const limiter = rateLimit({
+  interval: 60 * 1000,
+  uniqueTokenPerInterval: 1000,
+});
 
 const getAllPost = (page: string) => {
   return new Promise(async (resolve, reject) => {
@@ -36,6 +42,12 @@ export default async function handler(
 ) {
   const method = req.method;
   const page: any = req.query.page;
+
+  try {
+    await limiter.check(res, 30, "CACHE_TOKEN");
+  } catch {
+    return res.status(429).json({ error: "Rate limit exceeded" });
+  }
 
   switch (method) {
     case "GET":
