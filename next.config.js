@@ -1,4 +1,5 @@
 /** @type {import('next').NextConfig} */
+
 const nextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
@@ -6,11 +7,10 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "penak966616533.files.wordpress.com",
-      },
-      {
-        protocol: "https",
-        hostname: "penak966616533.files.wordpress.com",
+        hostname:
+          process.env.DEV_MODE === "true"
+            ? process.env.FILES_DOMAIN_DEV
+            : process.env.FILES_DOMAIN_PROD,
       },
     ],
   },
