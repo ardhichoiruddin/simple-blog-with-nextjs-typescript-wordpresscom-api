@@ -6,6 +6,7 @@ import Post, { DataProps } from "./Post";
 import PostsLoading from "@/components/global/PostsLoading";
 import axios from "@/libs/axios";
 import Button from "@/components/global/Button";
+import Title from "@/components/global/Title";
 
 const CategoryItem: FC = () => {
   const router = useRouter();
@@ -85,9 +86,7 @@ const CategoryItem: FC = () => {
     <>
       <section>
         <Container>
-          <div className="mb-1">
-            <h1 className="text-2xl sm:text-3xl">{title}</h1>
-          </div>
+          <Title>{title}</Title>
           {!loading.post && <Post data={data.post} />}
           {loading.post && <PostsLoading />}
           {postLength === 6 && (

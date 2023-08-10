@@ -1,4 +1,4 @@
-import { FC, memo } from "react";
+import { FC, memo, ReactNode } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -8,30 +8,47 @@ interface Props {
   title: string;
   date: string;
   subTitle: string;
+  type?: "link" | "ahref" | undefined;
 }
 
-const ArticleItem: FC<Props> = ({ image, slug, title, date, subTitle }) => {
+const ArticleItem: FC<Props> = ({
+  image,
+  slug,
+  title,
+  date,
+  subTitle,
+  type,
+}) => {
+  const CustomLink = ({
+    children,
+    className,
+  }: {
+    children: ReactNode;
+    className: string;
+  }) => {
+    return type === "ahref" ? (
+      <a href={slug} target="blank" className={className}>
+        {children}
+      </a>
+    ) : (
+      <Link href={`/${slug}`} className={className} prefetch={false}>
+        {children}
+      </Link>
+    );
+  };
   return (
     <article className="flex flex-col items-start gap-4 md:flex-row lg:gap-6">
-      <Link
-        href={`/${slug}`}
-        className="group relative block h-56 w-full shrink-0 self-start overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-24 md:w-24 lg:h-40 lg:w-40"
-        prefetch={false}
-      >
+      <CustomLink className="group relative block h-56 w-full shrink-0 self-start overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-24 md:w-24 lg:h-40 lg:w-40">
         <Image src={image} alt={title} fill />
-      </Link>
+      </CustomLink>
 
       <div className="flex flex-col gap-2">
         <span className="text-sm dark:text-gray-200 text-gray-800">{date}</span>
 
         <h2 className="text-xl font-bold text-gray-800">
-          <Link
-            href={`/${slug}`}
-            className="transition duration-100 dark:hover:text-rose-500 dark:active:text-rose-600 hover:text-rose-500 active:text-rose-600 dark:text-gray-100"
-            prefetch={false}
-          >
+          <CustomLink className="transition duration-100 dark:hover:text-rose-500 dark:active:text-rose-600 hover:text-rose-500 active:text-rose-600 dark:text-gray-100">
             {title}
-          </Link>
+          </CustomLink>
         </h2>
 
         <div
@@ -40,13 +57,9 @@ const ArticleItem: FC<Props> = ({ image, slug, title, date, subTitle }) => {
         ></div>
 
         <div>
-          <Link
-            href={`/${slug}`}
-            className="font-semibold text-rose-500 transition duration-100 hover:text-rose-600 active:text-rose-700 text-sm"
-            prefetch={false}
-          >
+          <CustomLink className="font-semibold text-rose-500 transition duration-100 hover:text-rose-600 active:text-rose-700 text-sm">
             Read more
-          </Link>
+          </CustomLink>
         </div>
       </div>
     </article>

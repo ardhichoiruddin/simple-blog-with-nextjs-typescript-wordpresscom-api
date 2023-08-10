@@ -12,6 +12,10 @@ const nextConfig = {
             ? process.env.FILES_DOMAIN_DEV
             : process.env.FILES_DOMAIN_PROD,
       },
+      {
+        protocol: "https",
+        hostname: "miro.medium.com",
+      },
     ],
   },
   async headers() {
