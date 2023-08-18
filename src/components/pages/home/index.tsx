@@ -84,7 +84,7 @@ const Home: FC = () => {
     categories: [],
   });
   const [loading, setLoading] = useState({
-    post: false,
+    post: true,
     postShowMore: false,
     category: false,
   });
