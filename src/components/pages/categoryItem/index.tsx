@@ -18,7 +18,7 @@ const CategoryItem: FC = () => {
     post: [],
   });
   const [loading, setLoading] = useState({
-    post: false,
+    post: true,
     postShowMore: false,
   });
   const [pagePost, setPagePost] = useState(1);

@@ -7,6 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 import Header, { MenuListsProps } from "../global/Header";
 import DarkModeSwitch from "../global/DarkModeSwitch";
 import Footer from "../global/Footer";
+import GithubStar from "../global/GithubStar";
 
 interface Props {
   children: ReactNode;
@@ -60,6 +61,7 @@ const Layout: FC<Props> = ({ children }) => {
       <br />
       <br />
       <br />
+      <GithubStar />
       <Footer />
     </div>
   );
