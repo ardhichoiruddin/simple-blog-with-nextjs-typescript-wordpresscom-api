@@ -30,7 +30,7 @@ const menulists: MenuListsProps[] = [
     id: 3,
     name: "Instagram",
     icon: "icon-instagram",
-    url: "https://instagram.com/__dotsama",
+    url: "https://instagram.com/_dotsama",
   },
   {
     id: 4,
