@@ -63,10 +63,7 @@ export const getServerSideProps: GetServerSideProps<{
     }),
     excerpt: result.excerpt,
   };
-  context.res.setHeader(
-    "Cache-Control",
-    "public, s-maxage=30, stale-while-revalidate=60"
-  );
+  context.res.setHeader("Cache-Control", "public, max-age=30,s-maxage=30");
   return { props: { data } };
 };
 
