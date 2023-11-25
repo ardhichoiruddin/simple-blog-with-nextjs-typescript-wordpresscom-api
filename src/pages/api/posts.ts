@@ -55,7 +55,7 @@ export default async function handler(
         const response = await getAllPost(page);
         res.setHeader(
           "Cache-Control",
-          "public, s-maxage=100, stale-while-revalidate=59"
+          "public, max-age=60, s-maxage=100, stale-while-revalidate=59"
         );
         return res.status(200).json(response);
       } catch (err) {
