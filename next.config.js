@@ -4,19 +4,20 @@ const nextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
   images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname:
-          process.env.DEV_MODE === "true"
-            ? process.env.FILES_DOMAIN_DEV
-            : process.env.FILES_DOMAIN_PROD,
-      },
-      {
-        protocol: "https",
-        hostname: "miro.medium.com",
-      },
-    ],
+    unoptimized: true,
+    // remotePatterns: [
+    //   {
+    //     protocol: "https",
+    //     hostname:
+    //       process.env.DEV_MODE === "true"
+    //         ? process.env.FILES_DOMAIN_DEV
+    //         : process.env.FILES_DOMAIN_PROD,
+    //   },
+    //   {
+    //     protocol: "https",
+    //     hostname: "miro.medium.com",
+    //   },
+    // ],
   },
   async headers() {
     return [
